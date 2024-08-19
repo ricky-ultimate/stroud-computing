@@ -10,7 +10,7 @@ fn main() {
 }
 
 fn get_coefficient(name: &str) -> f64 {
-    println!("Enter coefficient {}:", name);
+    print!("Enter coefficient {}: ", name);
     io::stdout().flush().unwrap();
 
     let mut input = String::new();
