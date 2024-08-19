@@ -1,21 +1,25 @@
 use std::io;
+use std::io::Write;
 
 fn main() {
+    let a = get_coefficient("a");
+    let b = get_coefficient("c");
+    let c = get_coefficient("c");
+
+    find_roots(a, b, c);
+}
+
+fn get_coefficient(name: &str) -> f64 {
+    println!("Enter coefficient {}:", name);
+    io::stdout().flush().unwrap();
+
     let mut input = String::new();
 
-    println!("Enter coefficient a:");
     io::stdin().read_line(&mut input).expect("Failed to read line");
-    let a: f64 = input.trim().parse().expect("Please enter a number");
-    input.clear();
+    input.trim().parse().expect("Please enter a number")
+}
 
-    println!("Enter coefficient b:");
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-    let b: f64 = input.trim().parse().expect("Please enter a number");
-    input.clear();
-
-    println!("Enter coefficient c:");
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-    let c: f64 = input.trim().parse().expect("Please enter a number");
+fn find_roots(a: f64, b: f64, c: f64) {
 
     let discriminant = b * b - 4.0 * a * c;
 
